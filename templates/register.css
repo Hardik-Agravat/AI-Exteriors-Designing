@@ -1,0 +1,124 @@
+/* Full-screen gradient background animation */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #3498db, #9b59b6, #2ecc71, #1abc9c);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;                /* Enable flexbox */
+    flex-direction: column;       /* Stack h2 and form vertically */
+    align-items: center;          /* Center horizontally */
+    justify-content: center;      /* Center vertically */
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Title style */
+h2 {
+    color: #fff;
+    text-align: center;
+    margin: 0 0 1rem 0;           /* Remove huge bottom margin */
+    padding: 0;
+    font-size: 2rem;
+}
+
+/* Card container */
+form {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    width: 400px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease;
+    backdrop-filter: blur(5px);
+}
+
+/* Input style */
+input {
+    width: 100%;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 8px #3498db;
+}
+
+/* Button style */
+button {
+    width: 100%;
+    padding: 0.7rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* Popup at right side */
+.popup {
+  position: fixed;
+  top: 20px;
+  right: -300px; /* hidden initially */
+  padding: 1rem 1.5rem;
+  background: #2ecc71;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: all 0.4s ease;
+  font-size: 1rem;
+  z-index: 999;
+}
+.popup.show {
+  right: 20px;
+  opacity: 1;
+}
+
+
+/* Register link */
+a {
+    display: block;
+    text-align: center;
+    color: #ecf0f1;
+    text-decoration: none;
+    margin-top: 1rem;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,91 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form Styling */
+form#emailForm {
+  background-color: #ffffff;
+  padding: 35px 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Heading */
+form#emailForm h2 {
+  color: #0e5f4c;
+  margin-bottom: 25px;
+  font-size: 22px;
+}
+
+/* Input Field */
+form#emailForm input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+form#emailForm input:focus {
+  border-color: #0e5f4c;
+  outline: none;
+}
+
+/* Submit Button */
+form#emailForm button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0e5f4c;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form#emailForm button:hover {
+  background-color: #40675d;
+}
+
+#toast {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  background-color: #dc3545; /* red by default */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  z-index: 1000;
+  display: none;
+}
+
+#toast.show {
+  display: block;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; top: 10px; }
+  10% { opacity: 1; top: 20px; }
+  90% { opacity: 1; top: 20px; }
+  100% { opacity: 0; top: 10px; }
+}

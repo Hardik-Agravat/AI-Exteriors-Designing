@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exterior Design</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fa-solid fa-house"></i>
+        <span class="brand">Exterior Design</span>
+      </div>
+      <ul class="nav-links">
+        <li><a class="active" href="#home">🏠 Home</a></li>
+        <li><a href="#about">📄 About</a></li>
+        <li><a href="#contact">✉️ Contact</a></li>
+        <li><a href="#generate">🖼️ Generate Images</a></li>
+      </ul>
+      <div class="nav-right">
+        <a id="logout-btn" onclick="loginbtn()">➡️ Log Out</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    
+    <h1>Transform Your <span>Exterior</span></h1>
+    <p>Create stunning exterior designs for your home with our AI-powered design tools.<br>
+       From modern facades to classic garden landscapes, bring your vision to life.</p>
+    <div class="hero-buttons">
+      <a href="#generate" class="primary-btn">Generate Design ➜</a>
+      <a href="#about" class="secondary-btn">Learn More</a>
+    </div>
+
+    
+    <section id="home" class="home-section">
+    <div class="home-intro">
+        <h2>Why Choose Our Exterior Design?</h2>
+        <p>Professional quality designs with modern technology</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-card reveal">
+        <div class="icon-circle">🎨</div>
+        <h3>Creative Designs</h3>
+        <p>Transform your outdoor space with innovative and beautiful exterior designs.</p>
+        </div>
+        <div class="feature-card reveal">
+        <div class="icon-circle">⚡</div>
+        <h3>AI-Powered</h3>
+        <p>Generate stunning exterior designs using cutting-edge AI technology.</p>
+        </div>
+        <div class="feature-card reveal">
+        <div class="icon-circle">🛡️</div>
+        <h3>Professional Quality</h3>
+        <p>High-quality designs created by experienced exterior design professionals.</p>
+        </div>
+    </div>
+
+    <div class="cta-box reveal">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Join thousands of homeowners who have transformed their exteriors with our design platform.</p>
+        <div class="reviews">
+        <span>⭐ 4.9/5 from 2,000+ reviews</span>
+        </div>
+        <a href="#generate" class="cta-button">Get Started Today ➜</a>
+    </div>
+    </section>
+
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about"  class="about-section reveal">
+    <h2>About <span class="highlight">Exterior Design</span></h2>
+    <p class="subheading">We are passionate about transforming outdoor spaces through innovative design and cutting-edge technology.</p>
+
+    <div class="story-box">
+      <div class="story-text">
+        <h3>Our Story</h3>
+        <p>Founded in 2020, Exterior Design was born from a simple idea: make professional exterior design accessible to everyone. We noticed that homeowners struggled to visualize how their outdoor spaces could be transformed.</p>
+        <p>By combining our team’s decades of design experience with advanced AI technology, we created a platform that generates stunning, personalized exterior designs in minutes rather than weeks.</p>
+        <p>Today, we've helped over 10,000 homeowners transform their properties, from small garden makeovers to complete facade renovations.</p>
+      </div>
+      <div class="story-metrics">
+        <div class="metric"><strong>10K+</strong><br>Happy Clients</div>
+        <div class="metric"><strong>50K+</strong><br>Designs Created</div>
+        <div class="metric"><strong>4.9</strong><br>Average Rating</div>
+        <div class="metric"><strong>24/7</strong><br>Support</div>
+      </div>
+    </div>
+
+    <h3 class="values-heading">Our Values</h3>
+    <p class="subheading">The principles that guide everything we do</p>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="icon">💡</div>
+        <h4>Innovation</h4>
+        <p>We use cutting-edge AI technology to create unique and personalized exterior designs.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="icon">🤝</div>
+        <h4>Collaboration</h4>
+        <p>Working closely with our clients to understand their vision and bring it to life.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="icon">🏆</div>
+        <h4>Excellence</h4>
+        <p>Committed to delivering the highest quality designs that exceed expectations.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="icon">❤️</div>
+        <h4>Passion</h4>
+        <p>We love what we do and it shows in every design we create for our clients.</p>
+      </div>
+    </div>
+
+    <div class="mission-box reveal">
+      <h3>Our Mission</h3>
+      <p>To democratize professional exterior design by making it accessible, affordable, and instant. We believe every homeowner deserves a beautiful outdoor space that reflects their personality and enhances their quality of life.</p>
+    </div>
+  </section>
+
+    <section id="contact" class="contact-section reveal">
+    <h2>Get In <span class="highlight">Touch</span></h2>
+    <p class="subheading">Have questions about our exterior design services? We'd love to hear from you. Send us a message and we’ll respond as soon as possible.</p>
+
+      <div class="contact-grid-wrapper">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form id="contact-form">
+            <h3>Send us a Message</h3>
+            <p>Fill out the form below and we’ll get back to you within 24 hours.</p>
+            <input id="name" type="text" placeholder="Full Name" required />
+            <input id="email" type="email" placeholder="Email Address" required />
+            <input id="subject" type="text" placeholder="Subject" required />
+            <textarea id="message" placeholder="Message" required></textarea>
+            <button type="submit"><i>📩</i> Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h4>Contact Information</h4>
+          <div class="info-item">
+            <i>📧</i>
+            <p><strong>Email Us</strong>dickmondyanimation@gmail.com<br />Send us an email anytime</p>
+          </div>
+          <div class="info-item">
+            <i>📞</i>
+            <p><strong>Call Us</strong>+1 (555) 123-4567<br />Mon–Fri from 8am to 5pm</p>
+          </div>
+          <div class="info-item">
+            <i>📍</i>
+            <p><strong>Visit Us</strong>123 Design Street, Creative City, CC 12345</p>
+          </div>
+          <div class="info-item">
+            <i>⏰</i>
+            <p><strong>Working Hours</strong>Mon–Fri: 8am–5pm<br />Weekend: 10am–2pm</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Answers Below Contact Grid -->
+      <div class="quick-answers">
+        <h4>Quick Answers</h4>
+        <p><strong>How long does it take to generate a design?</strong> Most designs are generated within 2–5 minutes using our AI technology.</p>
+        <p><strong>Can I modify the generated designs?</strong> Yes! You can customize colors, materials, and layouts to match your preferences.</p>
+        <p><strong>Do you offer professional consultation?</strong> Absolutely! Our design experts are available for personalized consultations.</p>
+      </div>
+    </section>
+
+    <section id="generate" class="generate-section reveal">
+    <h2>Generate <span class="highlight">AI Designs</span></h2>
+    <p class="subheading">
+        Transform your ideas into stunning exterior designs using our advanced AI technology.<br>
+        Simply describe your vision and watch it come to life.
+    </p>
+
+    <div class="generate-grid reveal">
+        <!-- Generator Controls -->
+        <div class="generate-controls">
+        <h3>🛠️ Design Generator</h3>
+        <p class="desc">Describe your dream exterior design and let AI create it for you.</p>
+
+        <label for="design-desc">Design Description</label>
+        <input type="text" id="prompt" placeholder="Enter prompt" />
+        <div id="generatedImages"></div>
+
+
+        
+
+        <h4>Quick Style Options</h4>
+        <div class="tag-grid">
+            <button onclick="appendToPrompt(this.textContent)">Modern Minimalist</button>
+            <button onclick="appendToPrompt(this.textContent)">Traditional Classic</button>
+            <button onclick="appendToPrompt(this.textContent)">Contemporary Chic</button>
+            <button onclick="appendToPrompt(this.textContent)">Rustic Farmhouse</button>
+            <button onclick="appendToPrompt(this.textContent)">Mediterranean Villa</button>
+            <button onclick="appendToPrompt(this.textContent)">Scandinavian Style</button>
+        </div>
+
+        <h4>Add Features</h4>
+        <div class="tag-grid">
+            <button onclick="appendToPrompt(this.textContent)">Garden Landscaping</button>
+            <button onclick="appendToPrompt(this.textContent)">Facade Design</button>
+            <button onclick="appendToPrompt(this.textContent)">Outdoor Lighting</button>
+            <button onclick="appendToPrompt(this.textContent)">Patio & Deck</button>
+            <button onclick="appendToPrompt(this.textContent)">Driveway Design</button>
+            <button onclick="appendToPrompt(this.textContent)">Pool Area</button>
+        </div>
+
+        <button id="generate-btn">⚙️ Generate Design</button>
+
+        <div class="upload-section">
+          <form id="uploadForm" enctype="multipart/form-data">
+            <!-- Hidden actual file input -->
+            <input type="file" id="image" accept="image/*" style="display: none;" />
+
+            <!-- Custom styled button to trigger file input -->
+            <label for="image-upload" class="upload-btn">📤 Upload Reference Image</label>
+            <p class="upload-info">Upload a photo of your current exterior for AI to redesign</p>
+          </form>
+        </div>
+
+
+        <!-- Design Output -->
+        <div class="generate-preview">
+        <div class="preview-box">
+            <div class="preview-icon">🖼️</div>
+            <h4>Ready to Create</h4>
+            <p>Enter your design description to get started</p>
+            <div id="imageResults" class="image-grid"></div>
+        </div>
+        </div>
+    </div>
+    </section>
+    <div id="toast" class="toast">✅ Message sent successfully!</div>
+
+    <!-- Logout Confirmation Modal -->
+      <div id="logoutModal" class="modal-overlay">
+        <div class="modal-box">
+          <p>Are you sure you want to logout?</p>
+          <div class="modal-actions">
+            <button id="confirmLogoutBtn">Yes</button>
+            <button id="cancelLogoutBtn">No</button>
+          </div>
+        </div>
+      </div>
+    <script src="index.js"></script>
+  
+</body>
+</html>

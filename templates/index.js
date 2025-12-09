@@ -88,48 +88,114 @@ const form = document.getElementById("contact-form");
   }
 
 // for generate prompt button
-
 function appendToPrompt(text) {
-        const textarea = document.getElementById("design-desc");
-        textarea.value += (textarea.value ? ", " : "") + text;
+  const promptInput = document.getElementById("prompt");
+  if (promptInput) {
+    promptInput.value += (promptInput.value ? ", " : "") + text;
+  }
 }
 
-//for generate image
-document.getElementById("generate-btn").addEventListener("click", async () => {
-  const promptInput = document.getElementById("prompt");
-  const prompt = promptInput ? promptInput.value.trim() : "";
+// Handle file upload and display
+document.addEventListener("DOMContentLoaded", function() {
+  const fileInput = document.getElementById("image");
 
-  if (!prompt) {
-    alert("Please enter a prompt.");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:5000/api/design/generate-image", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt }),
+  // Handle file selection
+  if (fileInput) {
+    fileInput.addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        // Display preview
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const previewBox = document.querySelector(".preview-box");
+          if (previewBox) {
+            previewBox.innerHTML = `
+              <div class="preview-icon">🖼️</div>
+              <h4>Reference Image</h4>
+              <img src="${event.target.result}" alt="Reference image" style="max-width: 100%; max-height: 300px; border-radius: 8px; margin-top: 10px;" />
+              <p style="margin-top: 10px;">Image loaded. Enter your design description and generate.</p>
+            `;
+          }
+        };
+        reader.readAsDataURL(file);
+      }
     });
+  }
+});
 
-    const data = await response.json();
+//for generate image
+document.addEventListener("DOMContentLoaded", function() {
+  const generateBtn = document.getElementById("generate-btn");
+  if (generateBtn) {
+    generateBtn.addEventListener("click", async () => {
+      const promptInput = document.getElementById("prompt");
+      const prompt = promptInput ? promptInput.value.trim() : "";
+      const fileInput = document.getElementById("image");
+      const file = fileInput && fileInput.files[0] ? fileInput.files[0] : null;
 
-    const imageContainer = document.getElementById("result");
-    imageContainer.innerHTML = ""; // clear previous result
+      if (!prompt) {
+        alert("Please enter a prompt.");
+        return;
+      }
 
-    if (data.image) {
-      const img = document.createElement("img");
-      img.src = `data:image/png;base64,${data.image}`;
-      img.alt = "Generated design";
-      img.style.width = "300px";
-      img.style.margin = "10px";
-      imageContainer.appendChild(img);
-    } else {
-      imageContainer.innerText = "No image returned.";
-    }
-  } catch (err) {
-    console.error("Error generating image:", err);
-    alert("Something went wrong while generating the image.");
+      // Show loading state
+      const imageContainer = document.getElementById("imageResults");
+      if (imageContainer) {
+        imageContainer.innerHTML = '<div style="text-align: center; padding: 20px;"><p>⏳ Generating image... Please wait.</p></div>';
+      }
+
+      try {
+        const formData = new FormData();
+        formData.append("prompt", prompt);
+        if (file) {
+          formData.append("referenceImage", file);
+        }
+
+        const response = await fetch("http://localhost:5000/api/design/generate-image", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
+          const errorMessage = errorData.error || `HTTP error! status: ${response.status}`;
+          const errorDetails = errorData.details ? `\n\nDetails: ${errorData.details}` : '';
+          throw new Error(errorMessage + errorDetails);
+        }
+
+        const data = await response.json();
+
+        if (imageContainer) {
+          imageContainer.innerHTML = ""; // clear previous result
+
+          if (data.image) {
+            const img = document.createElement("img");
+            img.src = `data:image/png;base64,${data.image}`;
+            img.alt = "Generated design";
+            img.style.width = "100%";
+            img.style.maxWidth = "600px";
+            img.style.height = "auto";
+            img.style.borderRadius = "8px";
+            img.style.margin = "10px auto";
+            img.style.display = "block";
+            img.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+            imageContainer.appendChild(img);
+          } else if (data.error) {
+            const errorDetails = data.details ? `<br><small style="font-size: 0.9em; opacity: 0.8;">${data.details}</small>` : '';
+            imageContainer.innerHTML = `<div style="color: red; text-align: center; padding: 20px;">❌ ${data.error}${errorDetails}</div>`;
+          } else {
+            imageContainer.innerHTML = '<div style="text-align: center; padding: 20px;">No image returned.</div>';
+          }
+        }
+      } catch (err) {
+        console.error("Error generating image:", err);
+        const imageContainer = document.getElementById("imageResults");
+        if (imageContainer) {
+          imageContainer.innerHTML = `<div style="color: red; text-align: center; padding: 20px;">❌ Something went wrong while generating the image. ${err.message}</div>`;
+        } else {
+          alert("Something went wrong while generating the image: " + err.message);
+        }
+      }
+    });
   }
 });

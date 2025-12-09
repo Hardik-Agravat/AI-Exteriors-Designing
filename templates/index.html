@@ -185,12 +185,8 @@
         <h3>🛠️ Design Generator</h3>
         <p class="desc">Describe your dream exterior design and let AI create it for you.</p>
 
-        <label for="design-desc">Design Description</label>
-        <input type="text" id="prompt" placeholder="Enter prompt" />
-        <div id="generatedImages"></div>
-
-
-        
+        <label for="prompt">Design Description</label>
+        <input type="text" id="prompt" placeholder="Enter your design description or click style options below" />
 
         <h4>Quick Style Options</h4>
         <div class="tag-grid">
@@ -220,7 +216,7 @@
             <input type="file" id="image" accept="image/*" style="display: none;" />
 
             <!-- Custom styled button to trigger file input -->
-            <label for="image-upload" class="upload-btn">📤 Upload Reference Image</label>
+            <label for="image" class="upload-btn" style="cursor: pointer;">📤 Upload Reference Image</label>
             <p class="upload-info">Upload a photo of your current exterior for AI to redesign</p>
           </form>
         </div>

@@ -13,6 +13,13 @@ yarn-error.log*
 dist/
 build/
 
+# Ignore markdown docs
+API_KEY_SETUP.md
+BILLING_ISSUE_FIX.md
+FIXES_SUMMARY.md
+SETUP_GUIDE.md
+TROUBLESHOOTING.md
+
 # IDE / Editor folders
 .vscode/
 .idea/
